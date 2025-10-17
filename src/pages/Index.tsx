@@ -2,48 +2,111 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Index = () => {
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const menuItems = [
+  const menuCategories = [
     {
-      name: "Маргарита",
-      description: "Томатный соус, моцарелла, свежий базилик",
-      price: "450₽",
-      image: "https://cdn.poehali.dev/projects/a2124ecf-394a-494a-a99d-4d061660ae60/files/716498f8-fb44-454b-b853-e47233c7f912.jpg"
+      title: "Фирменные роллы",
+      items: [
+        { name: "Чикен", description: "рис, нори, сыр, курица, огурец", price: "170 руб." },
+        { name: "Овощной маки", description: "рис, нори, сыр огурец, помидор, болгарский перец, салат айсберг", price: "200 руб." },
+        { name: "Филадельфия маки", description: "рис, нори, сыр, огурец, лосось", price: "300 руб." },
+        { name: "Эби темпура", description: "рис, нори, сыр, тигровая креветка в кляре, масаго", price: "300 руб." },
+        { name: "Калифорния с крабом", description: "рис, нори, масаго, сыр, снежный краб, огурец", price: "250 руб." },
+        { name: "Калифорния с креветкой", description: "рис, нори, сыр масаго, тигровая креветка, огурец", price: "350 руб." },
+        { name: "Калифорния с лососем", description: "рис, нори, лосось, масаго, сыр, огурец", price: "350 руб." },
+        { name: "Калифорния с тунцом", description: "рис, нори, масаго, сыр, тунец, огурец", price: "400 руб." },
+        { name: "Осака", description: "рис, нори, сыр, огурец, лосось х/к, спайси, масаго зеленая", price: "400 руб." },
+        { name: "Киото", description: "рис, нори, креветка в темпуре, соус спайси, помидор, салат айсберг", price: "400 руб." },
+        { name: "Цезарь-ролл", description: "рис, нори, курица, салат айсберг, курица, сыр, пармезан, черри", price: "350 руб." },
+        { name: "Канада", description: "рис, нори, лосось, угорь, сыр, огурец, унаги соус, кунжут", price: "450 руб." },
+        { name: "VIP", description: "рис, нори, сыр, снежный краб, помидор, тигровая креветка", price: "500 руб." },
+        { name: "Филадельфия", description: "рис, нори, сыр, лосось", price: "350 руб." },
+        { name: "Спайси курица с айсбергом", description: "рис, нори, курица, сыр, салат айсберг, спайси соус", price: "350 руб." },
+        { name: "Филадельфия с креветкой", description: "рис, нори, лосось, тигровая креветка, сыр", price: "400 руб." },
+        { name: "Филадельфия с угрем", description: "рис, нори, лосось, угорь, сыр", price: "400 руб." },
+        { name: "Филадельфия копченая", description: "рис, нори, сыр, огурец, лосось х/к", price: "450 руб." },
+        { name: "Дракон", description: "рис, нори, сыр, авакадо, угорь, копченый лосось", price: "700 руб." }
+      ]
     },
     {
-      name: "Пепперони",
-      description: "Томатный соус, моцарелла, пепперони",
-      price: "550₽",
-      image: "https://cdn.poehali.dev/projects/a2124ecf-394a-494a-a99d-4d061660ae60/files/716498f8-fb44-454b-b853-e47233c7f912.jpg"
+      title: "Классические роллы",
+      items: [
+        { name: "Ролл с креветкой", description: "рис, нори, креветка", price: "200 руб." },
+        { name: "Ролл с лососем", description: "рис, нори, лосось", price: "250 руб." },
+        { name: "Ролл с авокадо", description: "рис, нори, авокадо", price: "150 руб." },
+        { name: "Ролл с огурцом", description: "рис, нори, огурец", price: "100 руб." },
+        { name: "Ролл с крабом", description: "рис, нори, краб", price: "200 руб." },
+        { name: "Ролл с угрем", description: "рис, нори, угорь, унаги соус, кунжут", price: "200 руб." },
+        { name: "Ролл с тунцом", description: "рис, нори, тунец", price: "200 руб." },
+        { name: "Ролл с чукой", description: "рис, нори, чука", price: "100 руб." }
+      ]
     },
     {
-      name: "Четыре сыра",
-      description: "Моцарелла, горгонзола, пармезан, козий сыр",
-      price: "620₽",
-      image: "https://cdn.poehali.dev/projects/a2124ecf-394a-494a-a99d-4d061660ae60/files/8e2f18a6-61a4-49c6-a315-f5027be6b3a0.jpg"
+      title: "Запеченные роллы",
+      items: [
+        { name: "Запеченный с крабом", description: "рис, нори, сыр, огурец, снежный краб, кунжут, фирменный соус", price: "300 руб." },
+        { name: "Запеченный с креветкой", description: "рис, нори, сыр, огурец, креветка, тигровая, кунжут, фирменный соус", price: "350 руб." },
+        { name: "Запеченный с лососем", description: "рис, нори, сыр, огурец, лосось, кунжут, фирменный соус", price: "400 руб." },
+        { name: "Калифорния запеченная", description: "рис, нори, сыр, авокадо, тигровая креветка, масаго, фирменный соус", price: "350 руб." },
+        { name: "Запеченная филадельфия", description: "рис, нори, сыр, лосось, фирменный соус, унаги, кунжут", price: "450 руб." },
+        { name: "Запеченный с тунцом", description: "рис, нори, сыр, огурец, тунец, кунжут, фирменный соус", price: "450 руб." },
+        { name: "Мидзо", description: "рис, нори, сыр, огурец, снежный краб, тигровая креветка, лук зеленый, фирменный соус", price: "450 руб." },
+        { name: "Чикаго", description: "рис, нори, сыр, огурец, бекон, лук зелёный, фирменный соус, унаги соус", price: "400 руб." },
+        { name: "Сырная креветка", description: "рис, нори, сыр, снежный краб, тигровая креветка, фирменный соус, унаги соус", price: "400 руб." }
+      ]
     },
     {
-      name: "Мясная",
-      description: "Томатный соус, моцарелла, ветчина, бекон, курица",
-      price: "680₽",
-      image: "https://cdn.poehali.dev/projects/a2124ecf-394a-494a-a99d-4d061660ae60/files/716498f8-fb44-454b-b853-e47233c7f912.jpg"
+      title: "Темпура",
+      items: [
+        { name: "Темпура бекон", description: "рис, нори, курица, бекон, сырный соус", price: "200 руб." },
+        { name: "Темпура цезарь", description: "рис, нори, сыр, черри, помидор, лист салата", price: "200 руб." },
+        { name: "Темпура краб", description: "рис, нори, снежный краб, сыр, огурец", price: "220 руб." },
+        { name: "Темпура креветка", description: "рис, нори, сыр, креветка, огурец", price: "250 руб." },
+        { name: "Темпура с лососем", description: "рис, нори, сыр, лосось, огурец", price: "300 руб." },
+        { name: "Темпура тунец", description: "рис, нори, сыр, тунец, огурец", price: "300 руб." },
+        { name: "Киото темпура", description: "рис, нори, сыр, лосось, тигровая креветка, огурец, масаго", price: "450 руб." }
+      ]
     },
     {
-      name: "Гавайская",
-      description: "Томатный соус, моцарелла, ветчина, ананасы",
-      price: "590₽",
-      image: "https://cdn.poehali.dev/projects/a2124ecf-394a-494a-a99d-4d061660ae60/files/716498f8-fb44-454b-b853-e47233c7f912.jpg"
+      title: "WOK",
+      items: [
+        { name: "WOK с морепродуктами", description: "пшеничная лапша тигровыми креветками, мидиями, кальмаром и сочными овощами в устричном соусе", price: "400 руб." },
+        { name: "WOK с курицей", description: "пшеничная лапша с сочными овощами и нежной куриной грудкой в соусе терияки", price: "350 руб." }
+      ]
     },
     {
-      name: "Вегетарианская",
-      description: "Томатный соус, моцарелла, грибы, болгарский перец, маслины",
-      price: "520₽",
-      image: "https://cdn.poehali.dev/projects/a2124ecf-394a-494a-a99d-4d061660ae60/files/8e2f18a6-61a4-49c6-a315-f5027be6b3a0.jpg"
+      title: "Паста",
+      items: [
+        { name: "Карбонара", description: "феттучини в сливочно-сырном соусе с обжаренными ломтиками бекона, под сырой поджаркой", price: "450 руб." },
+        { name: "С курицей и грибами", description: "феттучини с нежным филе куриной грудки, шампиньонами в сливочном соусе под сырой поджаркой", price: "450 руб." },
+        { name: "С морепродуктами", description: "феттучини в сливочно-томатном соусе с мидиями, кальмарами и осьминогом под сырой поджаркой", price: "500 руб." },
+        { name: "Паста «том-ям»", description: "феттучини с креветками и брокколи в остром соусе том-ям, под сырой поджаркой", price: "500 руб." }
+      ]
+    },
+    {
+      title: "Сеты",
+      items: [
+        { name: "Сет темпура (24шт)", description: "темпура лосось, темпура креветка, темпура краб", price: "800 руб." },
+        { name: "Сет классик (64шт)", description: "ролл с огурцом, ролл с лососем, ролл с угрем, ролл с крабом, ролл с тунцом, ролл с креветкой, ролл с чукой, ролл с авокадо", price: "1100 руб." },
+        { name: "Сет филадельфия (32шт)", description: "филадельфия классическая, филадельфия с креветкой, филадельфия с угрем, филадельфия копченая", price: "1500 руб." },
+        { name: "Горячая Япония (32шт)", description: "темпура бекон, темпура лосось, запеченный с креветкой, запеченный с тунцом", price: "1000 руб." },
+        { name: "Сет запеченный (32шт)", description: "запеченный с тунцом, запеченный с креветкой, запеченная филадельфия, запеченная калифорния", price: "1000 руб." },
+        { name: "Три хита (24шт)", description: "филадельфия, канада, калифорния с креветкой", price: "1200 руб." },
+        { name: "Япония сет (104шт)", description: "ролл с огурцом, овощной, филадельфия, калифорния краб, канада, осака, филадельфия маки, запеченный с креветкой, запеченный с тунцом, темпура лосось, темпура краб, темпура креветка, сырная креветка, ролл с крабом", price: "3000 руб." },
+        { name: "Сет «Дружная семья» (56шт)", description: "филадельфия, калифорния краб, запеченный с креветкой, запеченный с лососем, запеченная киото, темпура тунец, ролл с огурцом", price: "1600 руб." },
+        { name: "Веган сет (32шт)", description: "овощной ролл с огурцом, ролл с авокадо, ролл с чукой", price: "500 руб." }
+      ]
     }
   ];
 
@@ -119,29 +182,41 @@ const Index = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Наше меню</h2>
             <p className="text-xl text-muted-foreground">Выбирайте любимые вкусы</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {menuItems.map((item, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-scale-in group">
-                <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src={item.image} 
-                    alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold mb-2">{item.name}</h3>
-                  <p className="text-muted-foreground mb-4">{item.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-primary">{item.price}</span>
-                    <Button>
-                      <Icon name="ShoppingCart" size={20} className="mr-2" />
-                      В корзину
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
+              {menuCategories.map((category, categoryIndex) => (
+                <AccordionItem 
+                  key={categoryIndex} 
+                  value={`category-${categoryIndex}`}
+                  className="border rounded-lg overflow-hidden bg-card"
+                >
+                  <AccordionTrigger className="px-6 py-4 hover:bg-secondary/50 transition-colors">
+                    <span className="text-2xl font-bold">{category.title}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-4">
+                    <div className="space-y-3 pt-2">
+                      {category.items.map((item, itemIndex) => (
+                        <div 
+                          key={itemIndex} 
+                          className="flex justify-between items-start gap-4 p-4 rounded-lg hover:bg-secondary/30 transition-colors"
+                        >
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-lg mb-1">{item.name}</h4>
+                            <p className="text-sm text-muted-foreground">{item.description}</p>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-lg font-bold text-primary whitespace-nowrap">{item.price}</span>
+                            <Button size="sm">
+                              <Icon name="Plus" size={16} />
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </section>
