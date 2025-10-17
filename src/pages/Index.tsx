@@ -241,7 +241,7 @@ const Index = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Контакты</h2>
             <p className="text-xl text-muted-foreground">Будем рады видеть вас</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+          <div className="max-w-2xl mx-auto">
             <Card className="p-8">
               <h3 className="text-2xl font-bold mb-6">Свяжитесь с нами</h3>
               <div className="space-y-4">
@@ -272,15 +272,6 @@ const Index = () => {
                     <p className="font-semibold">Email</p>
                     <p className="text-muted-foreground">info@druzhnaya-semya.ru</p>
                   </div>
-                </div>
-              </div>
-            </Card>
-            <Card className="p-8 bg-secondary/30">
-              <h3 className="text-2xl font-bold mb-6">Карта проезда</h3>
-              <div className="w-full h-64 bg-muted rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <Icon name="MapPin" size={48} className="text-primary mx-auto mb-2" />
-                  <p className="text-muted-foreground">Интерактивная карта</p>
                 </div>
               </div>
             </Card>
