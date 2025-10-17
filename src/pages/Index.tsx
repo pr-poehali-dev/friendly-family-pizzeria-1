@@ -8,8 +8,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useState } from "react";
 
 const Index = () => {
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
+
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -18,7 +21,7 @@ const Index = () => {
     {
       title: "Фирменные роллы",
       items: [
-        { name: "Чикен", description: "рис, нори, сыр, курица, огурец", price: "170 руб." },
+        { name: "Чикен", description: "рис, нори, сыр, курица, огурец", price: "170 руб.", image: "https://cdn.poehali.dev/projects/a2124ecf-394a-494a-a99d-4d061660ae60/files/57446818-38a5-4fb0-af5b-781d61ecbdae.jpg" },
         { name: "Овощной маки", description: "рис, нори, сыр огурец, помидор, болгарский перец, салат айсберг", price: "200 руб." },
         { name: "Филадельфия маки", description: "рис, нори, сыр, огурец, лосось", price: "300 руб." },
         { name: "Эби темпура", description: "рис, нори, сыр, тигровая креветка в кляре, масаго", price: "300 руб." },
@@ -195,23 +198,39 @@ const Index = () => {
                   </AccordionTrigger>
                   <AccordionContent className="px-6 pb-4">
                     <div className="space-y-3 pt-2">
-                      {category.items.map((item, itemIndex) => (
-                        <div 
-                          key={itemIndex} 
-                          className="flex justify-between items-start gap-4 p-4 rounded-lg hover:bg-secondary/30 transition-colors"
-                        >
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-lg mb-1">{item.name}</h4>
-                            <p className="text-sm text-muted-foreground">{item.description}</p>
+                      {category.items.map((item, itemIndex) => {
+                        const itemId = `${categoryIndex}-${itemIndex}`;
+                        const isExpanded = expandedItem === itemId;
+                        
+                        return (
+                          <div key={itemIndex} className="border rounded-lg overflow-hidden">
+                            <div 
+                              onClick={() => setExpandedItem(isExpanded ? null : itemId)}
+                              className="flex justify-between items-start gap-4 p-4 cursor-pointer hover:bg-secondary/30 transition-colors"
+                            >
+                              <div className="flex-1">
+                                <h4 className="font-semibold text-lg mb-1">{item.name}</h4>
+                                <p className="text-sm text-muted-foreground">{item.description}</p>
+                              </div>
+                              <div className="flex items-center gap-3">
+                                <span className="text-lg font-bold text-primary whitespace-nowrap">{item.price}</span>
+                                <Button size="sm" onClick={(e) => e.stopPropagation()}>
+                                  <Icon name="Plus" size={16} />
+                                </Button>
+                              </div>
+                            </div>
+                            {isExpanded && (
+                              <div className="px-4 pb-4 animate-fade-in">
+                                <img 
+                                  src={item.image || "https://cdn.poehali.dev/projects/a2124ecf-394a-494a-a99d-4d061660ae60/files/57446818-38a5-4fb0-af5b-781d61ecbdae.jpg"}
+                                  alt={item.name}
+                                  className="w-full h-48 object-cover rounded-lg"
+                                />
+                              </div>
+                            )}
                           </div>
-                          <div className="flex items-center gap-3">
-                            <span className="text-lg font-bold text-primary whitespace-nowrap">{item.price}</span>
-                            <Button size="sm">
-                              <Icon name="Plus" size={16} />
-                            </Button>
-                          </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </AccordionContent>
                 </AccordionItem>
