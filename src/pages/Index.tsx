@@ -72,7 +72,7 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="text-3xl">🍕</div>
-              <span className="text-2xl font-bold text-primary">ДРУЖНАЯ СЕМЬЯ</span>
+              <span className="text-2xl font-bold text-primary logo-font">ДРУЖНАЯ СЕМЬЯ</span>
             </div>
             <div className="hidden md:flex items-center gap-6">
               <button onClick={() => scrollToSection('menu')} className="hover:text-primary transition-colors">Меню</button>
@@ -107,7 +107,7 @@ const Index = () => {
             </Button>
             <Button size="lg" variant="secondary" className="text-lg px-8">
               <Icon name="Phone" size={20} className="mr-2" />
-              +7 (999) 123-45-67
+              8 988 528 85 52
             </Button>
           </div>
         </div>
@@ -249,14 +249,14 @@ const Index = () => {
                   <Icon name="Phone" size={24} className="text-primary mt-1" />
                   <div>
                     <p className="font-semibold">Телефон</p>
-                    <p className="text-muted-foreground">+7 (999) 123-45-67</p>
+                    <p className="text-muted-foreground">8 988 528 85 52</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Icon name="MapPin" size={24} className="text-primary mt-1" />
                   <div>
                     <p className="font-semibold">Адрес</p>
-                    <p className="text-muted-foreground">г. Москва, ул. Примерная, д. 123</p>
+                    <p className="text-muted-foreground">г. Курганинск, ул. Первомайская, 3К</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -294,7 +294,7 @@ const Index = () => {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-3xl">🍕</span>
-                <span className="text-2xl font-bold">ДРУЖНАЯ СЕМЬЯ</span>
+                <span className="text-2xl font-bold logo-font">ДРУЖНАЯ СЕМЬЯ</span>
               </div>
               <p className="text-white/80">
                 Пицца для всей семьи с 2015 года
@@ -312,9 +312,9 @@ const Index = () => {
             <div>
               <h4 className="text-xl font-bold mb-4">Контакты</h4>
               <div className="space-y-2 text-white/80">
-                <p>+7 (999) 123-45-67</p>
+                <p>8 988 528 85 52</p>
                 <p>info@druzhnaya-semya.ru</p>
-                <p>г. Москва, ул. Примерная, 123</p>
+                <p>г. Курганинск, ул. Первомайская, 3К</p>
               </div>
             </div>
           </div>
