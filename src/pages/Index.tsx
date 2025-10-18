@@ -328,7 +328,7 @@ const Index = () => {
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
                 <Icon name="Clock" size={40} className="text-primary" />
               </div>
-              <h3 className="text-2xl font-bold mb-3">30-40 минут</h3>
+              <h3 className="text-2xl font-bold mb-3">от 30 минут</h3>
               <p className="text-muted-foreground">Среднее время доставки по городу</p>
             </Card>
             <Card className="text-center p-8 hover:shadow-lg transition-shadow">
