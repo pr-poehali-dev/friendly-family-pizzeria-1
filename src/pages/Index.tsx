@@ -362,7 +362,7 @@ const Index = () => {
             <div className="order-1 md:order-2">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">О нас</h2>
               <p className="text-lg text-muted-foreground mb-4">
-                Роллы-бар "ДРУЖНАЯ СЕМЬЯ" работает с 2015 года. Мы создали уютное место, где вы можете насладиться настоящими японскими роллами в кругу семьи и друзей.
+                Роллы-бар "ДРУЖНАЯ СЕМЬЯ" работает с 2011 года. Мы создали уютное место, где вы можете насладиться настоящими японскими роллами в кругу семьи и друзей.
               </p>
               <p className="text-lg text-muted-foreground mb-4">
                 Наши повара используют только свежие ингредиенты и готовят каждый ролл с душой. Рис готовится по традиционным японским рецептам, а рыба всегда свежая.
@@ -370,7 +370,7 @@ const Index = () => {
               <div className="flex flex-wrap gap-4 mt-8">
                 <Badge variant="secondary" className="text-lg py-2 px-4">
                   <Icon name="Award" size={20} className="mr-2" />
-                  10 лет опыта
+                  14 лет опыта
                 </Badge>
                 <Badge variant="secondary" className="text-lg py-2 px-4">
                   <Icon name="Users" size={20} className="mr-2" />
