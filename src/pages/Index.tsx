@@ -113,17 +113,17 @@ const Index = () => {
   const promotions = [
     {
       title: "Счастливые часы",
-      description: "Скидка 20% на все пиццы с 14:00 до 16:00",
+      description: "Скидка 20% на все роллы с 14:00 до 16:00",
       icon: "Clock"
     },
     {
-      title: "Вторая пицца в подарок",
-      description: "При заказе от 2000₽ вторая пицца в подарок",
+      title: "Второй ролл в подарок",
+      description: "При заказе от 2000₽ второй ролл в подарок",
       icon: "Gift"
     },
     {
       title: "Семейный комбо",
-      description: "3 больших пиццы + напитки = 1990₽",
+      description: "3 больших сета + напитки = 1990₽",
       icon: "Users"
     }
   ];
@@ -160,9 +160,9 @@ const Index = () => {
           }}
         />
         <div className="relative z-10 text-center text-white px-4 animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">Пицца для всей семьи</h1>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">Роллы для всей семьи</h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-            Готовим с любовью по традиционным итальянским рецептам
+            Готовим с любовью по традиционным японским рецептам
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="text-lg px-8" onClick={() => scrollToSection('menu')}>
@@ -266,10 +266,10 @@ const Index = () => {
             <div className="order-1 md:order-2">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">О нас</h2>
               <p className="text-lg text-muted-foreground mb-4">
-                Пиццерия "ДРУЖНАЯ СЕМЬЯ" работает с 2015 года. Мы создали уютное место, где можно насладиться настоящей итальянской пиццей в кругу семьи и друзей.
+                Роллы-бар "ДРУЖНАЯ СЕМЬЯ" работает с 2015 года. Мы создали уютное место, где вы можете насладиться настоящими японскими роллами в кругу семьи и друзей.
               </p>
               <p className="text-lg text-muted-foreground mb-4">
-                Наши повара используют только свежие ингредиенты и готовят каждую пиццу с душой. Тесто замешивается вручную каждый день, а соус готовится по традиционному итальянскому рецепту.
+                Наши повара используют только свежие ингредиенты и готовят каждый ролл с душой. Рис готовится по традиционным японским рецептам, а рыба всегда свежая.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
                 <Badge variant="secondary" className="text-lg py-2 px-4">
