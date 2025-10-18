@@ -8,10 +8,42 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Cart, CartItem } from "@/components/Cart";
+import { useState } from "react";
 
 const Index = () => {
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const addToCart = (name: string, price: string) => {
+    const priceNumber = parseInt(price.replace(/[^0-9]/g, ''));
+    const existingIndex = cartItems.findIndex(item => item.name === name);
+    
+    if (existingIndex >= 0) {
+      const newItems = [...cartItems];
+      newItems[existingIndex].quantity += 1;
+      setCartItems(newItems);
+    } else {
+      setCartItems([...cartItems, { name, price, quantity: 1, priceNumber }]);
+    }
+  };
+
+  const updateQuantity = (index: number, delta: number) => {
+    const newItems = [...cartItems];
+    newItems[index].quantity += delta;
+    if (newItems[index].quantity <= 0) {
+      newItems.splice(index, 1);
+    }
+    setCartItems(newItems);
+  };
+
+  const removeFromCart = (index: number) => {
+    const newItems = [...cartItems];
+    newItems.splice(index, 1);
+    setCartItems(newItems);
   };
 
   const menuCategories = [
@@ -144,10 +176,17 @@ const Index = () => {
               <button onClick={() => scrollToSection('promotions')} className="hover:text-primary transition-colors">Акции</button>
               <button onClick={() => scrollToSection('contacts')} className="hover:text-primary transition-colors">Контакты</button>
             </div>
-            <Button size="lg" className="hidden md:flex">
-              <Icon name="Phone" size={20} className="mr-2" />
-              Позвонить
-            </Button>
+            <div className="flex items-center gap-3">
+              <Cart 
+                items={cartItems}
+                onUpdateQuantity={updateQuantity}
+                onRemove={removeFromCart}
+              />
+              <Button size="lg" className="hidden md:flex">
+                <Icon name="Phone" size={20} className="mr-2" />
+                Позвонить
+              </Button>
+            </div>
           </div>
         </nav>
       </header>
@@ -206,7 +245,7 @@ const Index = () => {
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-lg font-bold text-primary whitespace-nowrap">{item.price}</span>
-                            <Button size="sm">
+                            <Button size="sm" onClick={() => addToCart(item.name, item.price)}>
                               <Icon name="Plus" size={16} />
                             </Button>
                           </div>
