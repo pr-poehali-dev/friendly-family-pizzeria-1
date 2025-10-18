@@ -198,17 +198,26 @@ const Index = () => {
                       {category.items.map((item, itemIndex) => (
                         <div 
                           key={itemIndex} 
-                          className="flex justify-between items-start gap-4 p-4 rounded-lg hover:bg-secondary/30 transition-colors"
+                          className="flex gap-4 p-4 rounded-lg hover:bg-secondary/30 transition-colors"
                         >
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-lg mb-1">{item.name}</h4>
-                            <p className="text-sm text-muted-foreground">{item.description}</p>
-                          </div>
-                          <div className="flex items-center gap-3">
-                            <span className="text-lg font-bold text-primary whitespace-nowrap">{item.price}</span>
-                            <Button size="sm">
-                              <Icon name="Plus" size={16} />
-                            </Button>
+                          {item.image && (
+                            <img 
+                              src={item.image}
+                              alt={item.name}
+                              className="w-24 h-24 object-cover rounded-lg flex-shrink-0"
+                            />
+                          )}
+                          <div className="flex-1 flex justify-between items-start gap-4">
+                            <div className="flex-1">
+                              <h4 className="font-semibold text-lg mb-1">{item.name}</h4>
+                              <p className="text-sm text-muted-foreground">{item.description}</p>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <span className="text-lg font-bold text-primary whitespace-nowrap">{item.price}</span>
+                              <Button size="sm">
+                                <Icon name="Plus" size={16} />
+                              </Button>
+                            </div>
                           </div>
                         </div>
                       ))}
