@@ -336,7 +336,7 @@ const Index = () => {
                 <Icon name="MapPin" size={40} className="text-primary" />
               </div>
               <h3 className="text-2xl font-bold mb-3">Бесплатно</h3>
-              <p className="text-muted-foreground">При заказе от 800₽</p>
+              <p className="text-muted-foreground">При заказе от 1000₽</p>
             </Card>
             <Card className="text-center p-8 hover:shadow-lg transition-shadow">
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
