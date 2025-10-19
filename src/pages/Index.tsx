@@ -312,7 +312,7 @@ const Index = () => {
                             <img 
                               src={item.image} 
                               alt={item.name}
-                              className="w-full h-48 object-cover rounded-lg"
+                              className="w-full h-32 object-cover rounded-lg"
                             />
                           )}
                         </div>
