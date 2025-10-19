@@ -437,13 +437,6 @@ const Index = () => {
                     <p className="text-muted-foreground">Ежедневно с 10:00 до 23:00</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <Icon name="Mail" size={24} className="text-primary mt-1" />
-                  <div>
-                    <p className="font-semibold">Email</p>
-                    <p className="text-muted-foreground">info@druzhnaya-semya.ru</p>
-                  </div>
-                </div>
               </div>
             </Card>
           </div>
