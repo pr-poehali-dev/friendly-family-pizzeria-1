@@ -458,9 +458,12 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-3xl">🍕</span>
-                <span className="text-2xl font-bold logo-font">ДРУЖНАЯ СЕМЬЯ</span>
+              <div className="flex items-center gap-3 mb-4">
+                <img 
+                  src="https://cdn.poehali.dev/files/b88c065a-d3a7-46c8-986b-39050a097e32.png" 
+                  alt="Дружная семья" 
+                  className="h-16 w-auto"
+                />
               </div>
             </div>
             <div>
