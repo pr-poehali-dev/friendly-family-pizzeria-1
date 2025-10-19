@@ -385,10 +385,6 @@ const Index = () => {
                   14 лет опыта
                 </Badge>
                 <Badge variant="secondary" className="text-lg py-2 px-4">
-                  <Icon name="Users" size={20} className="mr-2" />
-                  50 000+ клиентов
-                </Badge>
-                <Badge variant="secondary" className="text-lg py-2 px-4">
                   <Icon name="Heart" size={20} className="mr-2" />
                   100% натурально
                 </Badge>
