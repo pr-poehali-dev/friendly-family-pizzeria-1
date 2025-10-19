@@ -101,7 +101,7 @@ const Index = () => {
     {
       title: "Темпура",
       items: [
-        { name: "Темпура бекон", description: "рис, нори, курица, бекон, сырный соус", price: "200 руб." },
+        { name: "Темпура бекон", description: "рис, нори, курица, бекон, сырный соус", price: "200 руб.", image: "https://cdn.poehali.dev/files/c83b9d98-eb12-4a92-9eda-9eb81d18cf67.png" },
         { name: "Темпура цезарь", description: "рис, нори, сыр, черри, помидор, лист салата", price: "200 руб." },
         { name: "Темпура краб", description: "рис, нори, снежный краб, сыр, огурец", price: "220 руб." },
         { name: "Темпура креветка", description: "рис, нори, сыр, креветка, огурец", price: "250 руб.", image: "https://cdn.poehali.dev/files/edde91c9-771b-4b2d-901c-d3ae5ad82f2c.png" },
