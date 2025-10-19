@@ -107,7 +107,7 @@ const Index = () => {
         { name: "Темпура креветка", description: "рис, нори, сыр, креветка, огурец", price: "250 руб.", image: "https://cdn.poehali.dev/files/edde91c9-771b-4b2d-901c-d3ae5ad82f2c.png" },
         { name: "Темпура с лососем", description: "рис, нори, сыр, лосось, огурец", price: "300 руб." },
         { name: "Темпура тунец", description: "рис, нори, сыр, тунец, огурец", price: "300 руб.", image: "https://cdn.poehali.dev/files/aecb13c7-fced-4552-aa9f-c0a4d91498e6.png" },
-        { name: "Киото темпура", description: "рис, нори, сыр, лосось, тигровая креветка, огурец, масаго", price: "450 руб." }
+        { name: "Киото темпура", description: "рис, нори, сыр, лосось, тигровая креветка, огурец, масаго", price: "450 руб.", image: "https://cdn.poehali.dev/files/59b11c14-9a87-48e4-8640-a125279cd294.png" }
       ]
     },
     {
