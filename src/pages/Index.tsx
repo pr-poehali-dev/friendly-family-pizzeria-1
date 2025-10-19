@@ -50,7 +50,7 @@ const Index = () => {
     {
       title: "Фирменные роллы",
       items: [
-        { name: "Чикен", description: "рис, нори, сыр, курица, огурец", price: "170 руб." },
+        { name: "Чикен", description: "рис, нори, сыр, курица, огурец", price: "170 руб.", image: "https://cdn.poehali.dev/files/bbba8e05-9e82-42ad-a3ec-1b0f9979c6b4.png" },
         { name: "Овощной маки", description: "рис, нори, сыр огурец, помидор, болгарский перец, салат айсберг", price: "200 руб." },
         { name: "Филадельфия маки", description: "рис, нори, сыр, огурец, лосось", price: "300 руб." },
         { name: "Эби темпура", description: "рис, нори, сыр, тигровая креветка в кляре, масаго", price: "300 руб.", image: "https://cdn.poehali.dev/files/6d2ed298-ff1e-41f4-ab48-c7bce96fa9fe.png" },
