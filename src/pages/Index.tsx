@@ -459,9 +459,6 @@ const Index = () => {
                 <span className="text-3xl">🍕</span>
                 <span className="text-2xl font-bold logo-font">ДРУЖНАЯ СЕМЬЯ</span>
               </div>
-              <p className="text-white/80">
-                Пицца для всей семьи с 2015 года
-              </p>
             </div>
             <div>
               <h4 className="text-xl font-bold mb-4">Навигация</h4>
