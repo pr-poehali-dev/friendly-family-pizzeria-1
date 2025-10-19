@@ -202,7 +202,7 @@ const Index = () => {
   const promotions = [
     {
       title: "Счастливые часы",
-      description: "Скидка 20% на все роллы с 14:00 до 16:00",
+      description: "Скидка 10% на любой сет с 11:00 до 18:00 при заказе в пиццерии",
       icon: "Clock"
     },
     {
