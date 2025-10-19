@@ -81,7 +81,7 @@ const Index = () => {
         { name: "Ролл с крабом", description: "рис, нори, краб", price: "200 руб.", image: "https://cdn.poehali.dev/files/8cdaeaf9-09ed-4c46-9c46-9d7d0d84e0d6.png" },
         { name: "Ролл с угрем", description: "рис, нори, угорь, унаги соус, кунжут", price: "200 руб." },
         { name: "Ролл с тунцом", description: "рис, нори, тунец", price: "200 руб." },
-        { name: "Ролл с чукой", description: "рис, нори, чука", price: "100 руб." }
+        { name: "Ролл с чукой", description: "рис, нори, чука", price: "100 руб.", image: "https://cdn.poehali.dev/files/8b96c58e-39cf-43b8-aff2-2d503cc2fca8.png" }
       ]
     },
     {
