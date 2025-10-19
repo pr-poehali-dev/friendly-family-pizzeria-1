@@ -223,11 +223,8 @@ const Index = () => {
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <img 
-                src="https://cdn.poehali.dev/files/d726a9ad-17a8-4565-80ad-1935603e7aa0.png" 
-                alt="Дружная семья"
-                className="h-16 md:h-20"
-              />
+              <div className="text-3xl">🍕</div>
+              <span className="text-2xl font-bold text-primary logo-font">ДРУЖНАЯ СЕМЬЯ</span>
             </div>
             <div className="hidden md:flex items-center gap-6">
               <button onClick={() => scrollToSection('menu')} className="hover:text-primary transition-colors">Меню</button>
