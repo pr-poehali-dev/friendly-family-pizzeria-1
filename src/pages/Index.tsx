@@ -222,9 +222,12 @@ const Index = () => {
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="text-3xl">🍕</div>
-              <span className="text-2xl font-bold text-primary logo-font">ДРУЖНАЯ СЕМЬЯ</span>
+            <div className="flex items-center gap-3">
+              <img 
+                src="https://cdn.poehali.dev/files/b88c065a-d3a7-46c8-986b-39050a097e32.png" 
+                alt="Дружная семья" 
+                className="h-16 w-auto"
+              />
             </div>
             <div className="hidden md:flex items-center gap-6">
               <button onClick={() => scrollToSection('menu')} className="hover:text-primary transition-colors">Меню</button>
