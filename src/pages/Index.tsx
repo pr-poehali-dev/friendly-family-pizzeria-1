@@ -75,7 +75,7 @@ const Index = () => {
       title: "Классические роллы",
       items: [
         { name: "Ролл с креветкой", description: "рис, нори, креветка", price: "200 руб." },
-        { name: "Ролл с лососем", description: "рис, нори, лосось", price: "250 руб." },
+        { name: "Ролл с лососем", description: "рис, нори, лосось", price: "250 руб.", image: "https://cdn.poehali.dev/files/b8827e4a-9b8e-444d-ad84-d962731ac99c.png" },
         { name: "Ролл с авокадо", description: "рис, нори, авокадо", price: "150 руб." },
         { name: "Ролл с огурцом", description: "рис, нори, огурец", price: "100 руб." },
         { name: "Ролл с крабом", description: "рис, нори, краб", price: "200 руб." },
