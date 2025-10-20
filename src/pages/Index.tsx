@@ -502,7 +502,7 @@ const Index = () => {
           </DialogHeader>
           <div className="space-y-4 py-4">
             <p className="text-center text-lg">
-              Для завершения оформления заказа позвоните нам по номеру
+              Для завершения оформления заказа позвоните нам по номеру телефона
             </p>
             <a
               href="tel:+79885288552"
