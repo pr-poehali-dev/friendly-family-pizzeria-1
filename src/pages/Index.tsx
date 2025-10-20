@@ -276,9 +276,11 @@ const Index = () => {
                 onRemove={removeFromCart}
                 onCheckout={() => setIsOrderDialogOpen(true)}
               />
-              <Button size="lg" className="hidden md:flex">
-                <Icon name="Phone" size={20} className="mr-2" />
-                Позвонить
+              <Button size="lg" className="hidden md:flex" asChild>
+                <a href="tel:+79885288552">
+                  <Icon name="Phone" size={20} className="mr-2" />
+                  Позвонить
+                </a>
               </Button>
             </div>
           </div>
@@ -306,9 +308,11 @@ const Index = () => {
             <Button size="lg" className="text-lg px-8" onClick={() => scrollToSection('menu')}>
               Посмотреть меню
             </Button>
-            <Button size="lg" variant="secondary" className="text-lg px-8">
-              <Icon name="Phone" size={20} className="mr-2" />
-              8 988 528 85 52
+            <Button size="lg" variant="secondary" className="text-lg px-8" asChild>
+              <a href="tel:+79885288552">
+                <Icon name="Phone" size={20} className="mr-2" />
+                8 988 528 85 52
+              </a>
             </Button>
           </div>
         </div>
@@ -470,7 +474,9 @@ const Index = () => {
                   <Icon name="Phone" size={24} className="text-primary mt-1" />
                   <div>
                     <p className="font-semibold">Телефон</p>
-                    <p className="text-muted-foreground">8 988 528 85 52</p>
+                    <a href="tel:+79885288552" className="text-muted-foreground hover:text-primary transition-colors">
+                      8 988 528 85 52
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
