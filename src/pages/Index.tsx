@@ -10,9 +10,16 @@ import {
 } from "@/components/ui/accordion";
 import { Cart, CartItem } from "@/components/Cart";
 import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const Index = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isOrderDialogOpen, setIsOrderDialogOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -241,6 +248,7 @@ const Index = () => {
                 items={cartItems}
                 onUpdateQuantity={updateQuantity}
                 onRemove={removeFromCart}
+                onCheckout={() => setIsOrderDialogOpen(true)}
               />
               <Button size="lg" className="hidden md:flex">
                 <Icon name="Phone" size={20} className="mr-2" />
@@ -486,6 +494,26 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      <Dialog open={isOrderDialogOpen} onOpenChange={setIsOrderDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-center">Завершение заказа</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            <p className="text-center text-lg">
+              Для завершения оформления заказа позвоните нам по номеру
+            </p>
+            <a
+              href="tel:+79885288552"
+              className="flex items-center justify-center gap-3 bg-primary text-primary-foreground hover:bg-primary/90 p-4 rounded-lg transition-colors"
+            >
+              <Icon name="Phone" className="h-6 w-6" />
+              <span className="text-2xl font-bold">8 988 528 85 52</span>
+            </a>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

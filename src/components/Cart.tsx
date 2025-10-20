@@ -21,9 +21,10 @@ interface CartProps {
   items: CartItem[];
   onUpdateQuantity: (index: number, delta: number) => void;
   onRemove: (index: number) => void;
+  onCheckout?: () => void;
 }
 
-export const Cart = ({ items, onUpdateQuantity, onRemove }: CartProps) => {
+export const Cart = ({ items, onUpdateQuantity, onRemove, onCheckout }: CartProps) => {
   const total = items.reduce((sum, item) => sum + item.priceNumber * item.quantity, 0);
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -97,7 +98,7 @@ export const Cart = ({ items, onUpdateQuantity, onRemove }: CartProps) => {
                   <span className="text-xl font-bold">Итого:</span>
                   <span className="text-2xl font-bold text-primary">{total} руб.</span>
                 </div>
-                <Button className="w-full" size="lg">
+                <Button className="w-full" size="lg" onClick={onCheckout}>
                   <Icon name="Check" size={20} className="mr-2" />
                   Оформить заказ
                 </Button>
