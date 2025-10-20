@@ -405,7 +405,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div className="order-2 md:order-1">
               <img 
-                src="https://cdn.poehali.dev/projects/a2124ecf-394a-494a-a99d-4d061660ae60/files/18721c28-6621-4730-8431-e54746b4cb11.jpg"
+                src="https://cdn.poehali.dev/projects/a2124ecf-394a-494a-a99d-4d061660ae60/files/97cebc38-dcaa-454a-a614-855b2c55480d.jpg"
                 alt="О нас"
                 className="rounded-2xl shadow-2xl w-full"
               />
