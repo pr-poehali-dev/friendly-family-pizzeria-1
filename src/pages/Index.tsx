@@ -180,6 +180,19 @@ const Index = () => {
       ]
     },
     {
+      title: "Напитки",
+      items: [
+        { name: "Вода Бонаква 0,5 л", description: "", price: "80 руб." },
+        { name: "Кола 0,5 л", description: "", price: "180 руб." },
+        { name: "Кола 1 л", description: "", price: "250 руб." },
+        { name: "Сок Добрый в ассортименте 1 л", description: "", price: "250 руб." },
+        { name: "Сок Добрый в ассортименте 0,2 л", description: "", price: "80 руб." },
+        { name: "Pulpy 0,5 л", description: "", price: "150 руб." },
+        { name: "Rich 0,5 л", description: "", price: "150 руб." },
+        { name: "Лимон-лайм 0,5 л", description: "", price: "180 руб." }
+      ]
+    },
+    {
       title: "Салаты",
       items: [
         { name: "Салат «Гавайский»", description: "Сочный салат с нежным филе грудки, с ананасами и пекинской капустой в фирменном соусе", price: "350 руб." },
