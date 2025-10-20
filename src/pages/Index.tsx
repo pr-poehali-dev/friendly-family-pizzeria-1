@@ -192,19 +192,7 @@ const Index = () => {
         { name: "Крылья цыпленка запеченные", description: "", price: "460 руб." }
       ]
     },
-    {
-      title: "Напитки",
-      items: [
-        { name: "Вода Бонаква 0,5 л", description: "", price: "80 руб." },
-        { name: "Кола 0,5 л", description: "", price: "180 руб." },
-        { name: "Кола 1 л", description: "", price: "250 руб." },
-        { name: "Сок Добрый в ассортименте 1 л", description: "", price: "250 руб." },
-        { name: "Сок Добрый в ассортименте 0,2 л", description: "", price: "80 руб." },
-        { name: "Pulpy 0,5 л", description: "", price: "150 руб." },
-        { name: "Rich 0,5 л", description: "", price: "150 руб." },
-        { name: "Лимон-лайм 0,5 л", description: "", price: "180 руб." }
-      ]
-    },
+
     {
       title: "Салаты",
       items: [
