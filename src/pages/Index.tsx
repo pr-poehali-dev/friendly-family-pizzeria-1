@@ -227,7 +227,7 @@ const Index = () => {
         { name: "Сок Добрый 1л", description: "в ассортименте", price: "250 руб." },
         { name: "Сок Добрый 0,2л", description: "в ассортименте", price: "80 руб." },
         { name: "Pulpy 0,5л", description: "", price: "150 руб.", image: "https://cdn.poehali.dev/files/e5498395-19f4-49d0-9226-bbc13453b5b3.png" },
-        { name: "Rich (черный) 0,5л", description: "", price: "150 руб." },
+        { name: "Rich (черный) 0,5л", description: "", price: "150 руб.", image: "https://cdn.poehali.dev/files/03ce2306-65c8-46d8-88ab-4d6af774be1a.png" },
         { name: "Rich (зеленый) 0,5л", description: "", price: "150 руб." },
         { name: "Добрый Лимон-Лайм 0,5л", description: "", price: "180 руб.", image: "https://cdn.poehali.dev/files/ce5012dc-7205-4d4c-87b1-1291170e3d9d.png" }
       ]
