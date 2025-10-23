@@ -78,7 +78,7 @@ const Index = () => {
         { name: "Калифорния с креветкой", description: "рис, нори, сыр масаго, тигровая креветка, огурец", price: "350 руб.", image: "https://cdn.poehali.dev/files/5c08e181-d95e-4922-b1c8-aef9006f449c.png" },
         { name: "Калифорния с лососем", description: "рис, нори, лосось, масаго, сыр, огурец", price: "350 руб.", image: "https://cdn.poehali.dev/files/9ff7a9c2-58ac-4e80-9ee1-0c6e01f2a77a.png" },
         { name: "Калифорния с тунцом", description: "рис, нори, масаго, сыр, тунец, огурец", price: "400 руб." },
-        { name: "Осака", description: "рис, нори, сыр, огурец, лосось х/к, спайси, масаго зеленая", price: "400 руб." },
+        { name: "Осака", description: "рис, нори, сыр, огурец, лосось х/к, спайси, масаго зеленая", price: "400 руб.", image: "https://cdn.poehali.dev/files/83451c8d-bc7c-4edf-bcc1-87f95f593ff1.png" },
         { name: "Киото", description: "рис, нори, креветка в темпуре, соус спайси, помидор, салат айсберг", price: "400 руб.", image: "https://cdn.poehali.dev/files/047fe38b-4ec9-43e1-94b2-e21288c325a5.png" },
         { name: "Цезарь-ролл", description: "рис, нори, курица, салат айсберг, курица, сыр, пармезан, черри", price: "350 руб." },
         { name: "Канада", description: "рис, нори, лосось, угорь, сыр, огурец, унаги соус, кунжут", price: "450 руб.", image: "https://cdn.poehali.dev/files/a2e426e4-f593-4d0c-ac2a-083d5d03ed24.png" },
