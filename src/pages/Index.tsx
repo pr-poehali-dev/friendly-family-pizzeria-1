@@ -82,7 +82,7 @@ const Index = () => {
         { name: "Киото", description: "рис, нори, креветка в темпуре, соус спайси, помидор, салат айсберг", price: "400 руб.", image: "https://cdn.poehali.dev/files/047fe38b-4ec9-43e1-94b2-e21288c325a5.png" },
         { name: "Цезарь-ролл", description: "рис, нори, курица, салат айсберг, курица, сыр, пармезан, черри", price: "350 руб." },
         { name: "Канада", description: "рис, нори, лосось, угорь, сыр, огурец, унаги соус, кунжут", price: "450 руб.", image: "https://cdn.poehali.dev/files/a2e426e4-f593-4d0c-ac2a-083d5d03ed24.png" },
-        { name: "VIP", description: "рис, нори, сыр, снежный краб, помидор, тигровая креветка", price: "500 руб." },
+        { name: "VIP", description: "рис, нори, сыр, снежный краб, помидор, тигровая креветка", price: "500 руб.", image: "https://cdn.poehali.dev/files/02dd4fec-5a91-4e86-b632-ab01794dc757.png" },
         { name: "Филадельфия", description: "рис, нори, сыр, лосось", price: "350 руб.", image: "https://cdn.poehali.dev/files/6c61ceef-a145-4960-9c2d-400dbdfcf398.png" },
         { name: "Спайси курица с айсбергом", description: "рис, нори, курица, сыр, салат айсберг, спайси соус", price: "350 руб.", image: "https://cdn.poehali.dev/files/152d6ad2-21ab-4edb-a69f-f8eaa62ef52e.png" },
         { name: "Филадельфия с креветкой", description: "рис, нори, лосось, тигровая креветка, сыр", price: "400 руб.", image: "https://cdn.poehali.dev/files/3baaa040-2bde-44b2-b5a0-d9d2fd846923.png" },
