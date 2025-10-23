@@ -71,7 +71,7 @@ const Index = () => {
       title: "Фирменные роллы",
       items: [
         { name: "Чикен", description: "рис, нори, сыр, курица, огурец", price: "170 руб.", image: "https://cdn.poehali.dev/files/bbba8e05-9e82-42ad-a3ec-1b0f9979c6b4.png" },
-        { name: "Овощной маки", description: "рис, нори, сыр огурец, помидор, болгарский перец, салат айсберг", price: "200 руб." },
+        { name: "Овощной маки", description: "рис, нори, сыр огурец, помидор, болгарский перец, салат айсберг", price: "200 руб.", image: "https://cdn.poehali.dev/files/d6b7c3e2-9514-4b59-9ed1-9cceb7977954.png" },
         { name: "Филадельфия маки", description: "рис, нори, сыр, огурец, лосось", price: "300 руб.", image: "https://cdn.poehali.dev/files/ec26867f-a461-4dc6-a309-c3465eccad43.png" },
         { name: "Эби темпура", description: "рис, нори, сыр, тигровая креветка в кляре, масаго", price: "300 руб.", image: "https://cdn.poehali.dev/files/6d2ed298-ff1e-41f4-ab48-c7bce96fa9fe.png" },
         { name: "Калифорния с крабом", description: "рис, нори, масаго, сыр, снежный краб, огурец", price: "250 руб.", image: "https://cdn.poehali.dev/files/0a885597-be0d-4e3e-a90b-1cf561e610cd.png" },
