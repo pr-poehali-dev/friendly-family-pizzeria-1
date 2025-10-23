@@ -99,7 +99,7 @@ const Index = () => {
         { name: "Ролл с авокадо", description: "рис, нори, авокадо", price: "150 руб.", image: "https://cdn.poehali.dev/files/4b16c630-ef8d-4e8b-ad41-f64c4db88551.png" },
         { name: "Ролл с огурцом", description: "рис, нори, огурец", price: "100 руб.", image: "https://cdn.poehali.dev/files/17eeac65-8bf5-43a7-bb45-5a792f8d2c87.png" },
         { name: "Ролл с крабом", description: "рис, нори, краб", price: "200 руб.", image: "https://cdn.poehali.dev/files/8cdaeaf9-09ed-4c46-9c46-9d7d0d84e0d6.png" },
-        { name: "Ролл с угрем", description: "рис, нори, угорь, унаги соус, кунжут", price: "200 руб." },
+        { name: "Ролл с угрем", description: "рис, нори, угорь, унаги соус, кунжут", price: "200 руб.", image: "https://cdn.poehali.dev/files/d9348ce9-1fbc-45cf-a520-761e72c19957.png" },
         { name: "Ролл с тунцом", description: "рис, нори, тунец", price: "200 руб.", image: "https://cdn.poehali.dev/files/55d2cb06-c109-4b31-a177-486b601ecc78.png" },
         { name: "Ролл с чукой", description: "рис, нори, чука", price: "100 руб.", image: "https://cdn.poehali.dev/files/8b96c58e-39cf-43b8-aff2-2d503cc2fca8.png" }
       ]
