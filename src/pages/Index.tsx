@@ -233,6 +233,15 @@ const Index = () => {
         { name: "Добрый Лимон-Лайм 0,5л", description: "", price: "180 руб.", image: "https://cdn.poehali.dev/files/ce5012dc-7205-4d4c-87b1-1291170e3d9d.png" },
         { name: "Добрый Апельсин 1л", description: "", price: "250 руб.", image: "https://cdn.poehali.dev/files/9ce96942-206c-4e42-a161-80ca43c243af.png" }
       ]
+    },
+    {
+      title: "Соусы",
+      items: [
+        { name: "Сырный соус", description: "", price: "50 руб." },
+        { name: "Сливочно-чесночный соус", description: "", price: "50 руб." },
+        { name: "Кетчуп", description: "", price: "50 руб." },
+        { name: "Кисло-сладкий соус", description: "", price: "50 руб." }
+      ]
     }
   ];
 
