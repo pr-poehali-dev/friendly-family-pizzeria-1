@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
@@ -10,6 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Cart, CartItem } from "@/components/Cart";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -19,8 +19,8 @@ import {
 
 const Index = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isOrderDialogOpen, setIsOrderDialogOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const heroImages = [
     'https://cdn.poehali.dev/files/db2a3e11-c820-420f-a4e1-1aff51a0a020.JPG',
@@ -33,6 +33,38 @@ const Index = () => {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const addToCart = (name: string, price: string) => {
+    const priceNumber = parseInt(price.replace(/[^0-9]/g, ''));
+    const existingIndex = cartItems.findIndex(item => item.name === name);
+    
+    if (existingIndex >= 0) {
+      const newItems = [...cartItems];
+      newItems[existingIndex].quantity += 1;
+      setCartItems(newItems);
+    } else {
+      setCartItems([...cartItems, { name, price, quantity: 1, priceNumber }]);
+    }
+  };
+
+  const updateQuantity = (index: number, delta: number) => {
+    const newItems = [...cartItems];
+    newItems[index].quantity += delta;
+    if (newItems[index].quantity <= 0) {
+      newItems.splice(index, 1);
+    }
+    setCartItems(newItems);
+  };
+
+  const removeFromCart = (index: number) => {
+    const newItems = [...cartItems];
+    newItems.splice(index, 1);
+    setCartItems(newItems);
+  };
 
   const menuCategories = [
     {
@@ -89,44 +121,117 @@ const Index = () => {
     {
       title: "Темпура",
       items: [
-        { name: "Темпура маки с лососем", description: "рис, нори, сыр, огурец, лосось, кляр", price: "350 руб.", image: "https://cdn.poehali.dev/files/a6b40dd2-fc78-47a9-8c08-bce46fcc72c9.png" },
-        { name: "Темпура маки с крабом", description: "рис, нори, сыр, огурец, снежный краб, кляр", price: "250 руб.", image: "https://cdn.poehali.dev/files/bcbfc03c-21a2-4d10-bc51-4dc4bca8aa88.png" },
-        { name: "Темпура маки с креветкой", description: "рис, нори, сыр, огурец, тигровая креветка, кляр", price: "350 руб.", image: "https://cdn.poehali.dev/files/9f7a9b19-ac75-491d-b1f4-d8d30ac02fd4.png" },
-        { name: "Темпура маки с тунцом", description: "рис, нори, сыр, огурец, тунец, кляр", price: "400 руб.", image: "https://cdn.poehali.dev/files/98bae5e6-e9e9-4654-8e39-2e1c3872f1d6.png" },
-        { name: "Темпура цезарь", description: "рис, нори, курица, салат айсберг, помидоры черри, кляр, пармезан", price: "350 руб.", image: "https://cdn.poehali.dev/files/2614f7e8-c7e7-4ebe-b9e7-ae1b2ad7b2e4.png" }
+        { name: "Темпура бекон", description: "рис, нори, курица, бекон, сырный соус", price: "200 руб.", image: "https://cdn.poehali.dev/files/c83b9d98-eb12-4a92-9eda-9eb81d18cf67.png" },
+        { name: "Темпура цезарь", description: "рис, нори, сыр, черри, помидор, лист салата", price: "200 руб.", image: "https://cdn.poehali.dev/files/99a1c41f-e6c6-4448-b0fe-2baf69da8d2e.png" },
+        { name: "Темпура краб", description: "рис, нори, снежный краб, сыр, огурец", price: "220 руб.", image: "https://cdn.poehali.dev/files/cd656589-7a34-4628-a98a-b6a84ef8a600.png" },
+        { name: "Темпура креветка", description: "рис, нори, сыр, креветка, огурец", price: "250 руб.", image: "https://cdn.poehali.dev/files/edde91c9-771b-4b2d-901c-d3ae5ad82f2c.png" },
+        { name: "Темпура с лососем", description: "рис, нори, сыр, лосось, огурец", price: "300 руб." },
+        { name: "Темпура тунец", description: "рис, нори, сыр, тунец, огурец", price: "300 руб.", image: "https://cdn.poehali.dev/files/aecb13c7-fced-4552-aa9f-c0a4d91498e6.png" },
+        { name: "Киото темпура", description: "рис, нори, сыр, лосось, тигровая креветка, огурец, масаго", price: "450 руб.", image: "https://cdn.poehali.dev/files/59b11c14-9a87-48e4-8640-a125279cd294.png" }
+      ]
+    },
+    {
+      title: "WOK",
+      items: [
+        { name: "WOK с морепродуктами", description: "пшеничная лапша тигровыми креветками, мидиями, кальмаром и сочными овощами в устричном соусе", price: "400 руб." },
+        { name: "WOK с курицей", description: "пшеничная лапша с сочными овощами и нежной куриной грудкой в соусе терияки", price: "350 руб." }
+      ]
+    },
+    {
+      title: "Паста",
+      items: [
+        { name: "Карбонара", description: "феттучини в сливочно-сырном соусе с обжаренными ломтиками бекона, под сырой поджаркой", price: "450 руб." },
+        { name: "С курицей и грибами", description: "феттучини с нежным филе куриной грудки, шампиньонами в сливочном соусе под сырой поджаркой", price: "450 руб." },
+        { name: "С морепродуктами", description: "феттучини в сливочно-томатном соусе с мидиями, кальмарами и осьминогом под сырой поджаркой", price: "500 руб." },
+        { name: "Паста «том-ям»", description: "феттучини с креветками и брокколи в остром соусе том-ям, под сырой поджаркой", price: "500 руб." }
       ]
     },
     {
       title: "Пицца",
       items: [
-        { name: "Маргарита", description: "сыр моцарелла, томатный соус", price: "200 руб.", image: "https://cdn.poehali.dev/files/db046b12-8b1d-496e-b653-e3eb882bf5cd.png" },
-        { name: "С ветчиной", description: "сыр моцарелла, ветчина, томатный соус", price: "250 руб.", image: "https://cdn.poehali.dev/files/27cf870c-b4e0-4db6-861b-8d2c35809f25.png" },
-        { name: "С салями", description: "сыр моцарелла, салями, томатный соус", price: "250 руб.", image: "https://cdn.poehali.dev/files/8de97c81-78ee-4dbd-ba1f-7a0f7bd22f3e.png" },
-        { name: "С курицей", description: "сыр моцарелла, курица, шампиньоны, красный лук, томатный соус", price: "300 руб.", image: "https://cdn.poehali.dev/files/ab1cf4ec-3d47-4bfc-9fe2-0c8aa0de7e4c.png" },
-        { name: "Диабло", description: "сыр моцарелла, салями, халапеньо, томатный соус", price: "300 руб.", image: "https://cdn.poehali.dev/files/2f60f9db-4764-451e-81ce-c61c09d25cf8.png" },
-        { name: "Пепперони", description: "сыр моцарелла, пепперони, томатный соус", price: "300 руб.", image: "https://cdn.poehali.dev/files/c4c6cc13-8e5f-41b7-ba11-d63b72562b0d.png" },
-        { name: "Четыре сыра", description: "сыр моцарелла, дорблю, гауда, пармезан", price: "350 руб.", image: "https://cdn.poehali.dev/files/a38b055d-0ae2-4a62-8cf5-a1b2c4a8fec1.png" },
-        { name: "Гавайская", description: "сыр моцарелла, курица, ананасы, томатный соус", price: "350 руб.", image: "https://cdn.poehali.dev/files/aa62ffc0-a5c5-4fe9-880d-2c855e6a83a6.png" },
-        { name: "Мясная", description: "сыр моцарелла, ветчина, салями, бекон, томатный соус", price: "400 руб.", image: "https://cdn.poehali.dev/files/ee53e51a-e0aa-4a80-be4b-10c96c9c1c57.png" }
+        { name: "Чикен бекон", description: "40 см. Сыр моцарелла, соус белый, соус сырный, соус барбекю, бекон, обжаренный цыпленок, томаты свежие", price: "850 руб." },
+        { name: "Веронo", description: "40 см. Сыр моцарелла, соус из томатов, соус белый, обжаренный цыплёнок, шампиньоны", price: "850 руб." },
+        { name: "Каприччо", description: "40 см. Сыр моцарелла, соус белый, соус из томатов, обжаренный цыплёнок, ветчина премиум, сервелат, перец сладкий свежий", price: "850 руб." },
+        { name: "Пронто", description: "40 см. Сыр моцарелла, соус белый, соус ранч, обжаренный цыпленок, бекон, томаты свежие, грибы", price: "850 руб." },
+        { name: "Гавайская", description: "40 см. Сыр моцарелла, соус белый, соус из томатов, обжаренный цыпленок, ананасы, томаты свежие", price: "850 руб." },
+        { name: "Цезарь", description: "38 см. Курица, соус Цезарь, моцарелла, черри, лист салата, сухарики, пармезан", price: "850 руб." },
+        { name: "Пепперони", description: "40 см. Сыр моцарелла, фирменный пицца-соус, соус белый, колбаски пепперони", price: "850 руб." },
+        { name: "Наполи", description: "40 см. Сыр моцарелла, соус белый, ветчина премиум, томаты свежие", price: "850 руб." },
+        { name: "Ассорти", description: "40 см. Сыр моцарелла, соус из томатов, соус белый, сервелат, грибы, томаты свежие", price: "850 руб." },
+        { name: "Сицилийская", description: "40 см. Сыр моцарелла, соус белый, сервелат, бекон, грибы, томаты свежие, перец сладкий свежий, оливки", price: "850 руб." }
+      ]
+    },
+    {
+      title: "Пицца острая",
+      items: [
+        { name: "Крейзи пиг", description: "40 см. Сыр моцарелла, жгучий соус сальса, кетчуп, соус белый, соус горчичный, бекон премиум, перец халапеньо, перец жгучий чили", price: "850 руб." }
+      ]
+    },
+    {
+      title: "Пицца без мяса",
+      items: [
+        { name: "Маргарита", description: "40 см. Сыр моцарелла, соус белый, соус из томатов, грибы, томаты свежие", price: "850 руб." },
+        { name: "Сырная элитная", description: "40 см. Сыр моцарелла, сыр Дорблю, сыр пармезан, сыр фета, соус белый", price: "850 руб." },
+        { name: "Сырная новая", description: "40 см. Сыр моцарелла двойная порция, сыр фета, соус белый, прованские травы", price: "850 руб." }
+      ]
+    },
+    {
+      title: "Пицца с морепродуктами",
+      items: [
+        { name: "Маринара", description: "40 см. Сыр моцарелла, соус белый, соус из томатов, морской коктейль из морепродуктов, томаты свежие, оливки", price: "900 руб." },
+        { name: "Нежный лосось", description: "40 см. Сыр моцарелла, лосось, цедра лимона, черри, маслины, белый соус", price: "900 руб." }
+      ]
+    },
+    {
+      title: "Закуски",
+      items: [
+        { name: "Картофель фри", description: "", price: "250 руб." },
+        { name: "Картофель по-деревенски", description: "", price: "250 руб." },
+        { name: "Кольца луковые", description: "", price: "200 руб." },
+        { name: "Наггетсы куриные", description: "", price: "200 руб." },
+        { name: "Сырные палочки", description: "", price: "250 руб." },
+        { name: "Крылья цыпленка запеченные", description: "", price: "460 руб." }
+      ]
+    },
+
+    {
+      title: "Салаты",
+      items: [
+        { name: "Салат «Гавайский»", description: "Сочный салат с нежным филе грудки, с ананасами и пекинской капустой в фирменном соусе", price: "350 руб." },
+        { name: "Салат «Греческий»", description: "Греческий овощной салат с сыром фета и маслинами", price: "350 руб." },
+        { name: "Салат «Грибной с ветчиной»", description: "Сытный салат с грибами, ветчиной, томатами, огурцами и красным луком в майонезной заправке", price: "400 руб." },
+        { name: "Салат «Оливье»", description: "Классический оливье", price: "250 руб." },
+        { name: "Салат «Цезарь с курицей»", description: "Классический салат «Цезарь с курицей», микс салата, соус Цезарь, черри, пармезан", price: "400 руб." },
+        { name: "Салат «Цезарь с креветкой»", description: "Айсберг, соус Цезарь, черри, пармезан, сухарики", price: "500 руб." }
       ]
     },
     {
       title: "Сеты",
       items: [
-        { name: "Сет Мидори", description: "Осака, Канада, Эби темпура, Филадельфия х/к, Калифорния с крабом", price: "1850 руб.", image: "https://cdn.poehali.dev/files/00e88a32-94fd-4d2e-abab-6f9f37c81f25.png" },
-        { name: "Сет для двоих", description: "Филадельфия, Калифорния с креветкой, Калифорния с крабом, Чикен, Ролл с крабом, Ролл с огурцом", price: "2000 руб.", image: "https://cdn.poehali.dev/files/e9308c17-b8bb-4f18-91db-ee1f84f0e3c3.png" },
-        { name: "Сет Окинава", description: "Филадельфия, Филадельфия маки, Калифорния с лососем, Запеченная с лососем", price: "1500 руб.", image: "https://cdn.poehali.dev/files/82c44e91-73a5-451b-87d9-e509a7bfd4c7.png" }
+        { name: "Сет темпура (24шт)", description: "темпура лосось, темпура креветка, темпура краб", price: "800 руб.", image: "https://cdn.poehali.dev/files/199f321a-84ae-410d-9c0a-f3e2bf108c36.png" },
+        { name: "Сет классик (64шт)", description: "ролл с огурцом, ролл с лососем, ролл с угрем, ролл с крабом, ролл с тунцом, ролл с креветкой, ролл с чукой, ролл с авокадо", price: "1100 руб.", image: "https://cdn.poehali.dev/files/5ae4269d-b987-482e-ab3c-737ee6397bfc.png" },
+        { name: "Сет филадельфия (32шт)", description: "филадельфия классическая, филадельфия с креветкой, филадельфия с угрем, филадельфия копченая", price: "1500 руб.", image: "https://cdn.poehali.dev/files/5356662c-e774-4903-926a-729938a73e4a.png" },
+        { name: "Горячая Япония (32шт)", description: "темпура бекон, темпура лосось, запеченный с креветкой, запеченный с тунцом", price: "1000 руб.", image: "https://cdn.poehali.dev/files/04c9237b-bb65-4dc2-9aa7-8d236e97d212.png" },
+        { name: "Сет запеченный (32шт)", description: "запеченный с тунцом, запеченный с креветкой, запеченная филадельфия, запеченная калифорния", price: "1000 руб.", image: "https://cdn.poehali.dev/files/8c3d77fc-7664-438d-8082-19da94ed56ce.png" },
+        { name: "Три хита (24шт)", description: "филадельфия, канада, калифорния с креветкой", price: "1200 руб.", image: "https://cdn.poehali.dev/files/9034131e-b156-411d-b510-12b99c939440.png" },
+        { name: "Япония сет (104шт)", description: "ролл с огурцом, овощной, филадельфия, калифорния краб, канада, осака, филадельфия маки, запеченный с креветкой, запеченный с тунцом, темпура лосось, темпура краб, темпура креветка, сырная креветка, ролл с крабом", price: "3000 руб.", image: "https://cdn.poehali.dev/files/aea44a36-1935-40ae-97b1-75af9215b6fd.png" },
+        { name: "Сет «Дружная семья» (56шт)", description: "филадельфия, калифорния краб, запеченный с креветкой, запеченный с лососем, темпура цезарь, темпура тунец, ролл с огурцом", price: "1600 руб.", image: "https://cdn.poehali.dev/files/e9956974-1b81-426d-9a28-631916dada5f.png" },
+        { name: "Веган сет (32шт)", description: "овощной ролл с огурцом, ролл с авокадо, ролл с чукой", price: "500 руб.", image: "https://cdn.poehali.dev/files/315b0d7b-14da-4ac6-a2ae-af322af001bb.png" }
       ]
     },
     {
       title: "Напитки",
       items: [
-        { name: "Coca-Cola", description: "0.5л", price: "80 руб." },
-        { name: "Fanta", description: "0.5л", price: "80 руб." },
-        { name: "Sprite", description: "0.5л", price: "80 руб." },
-        { name: "Сок Rich", description: "1л", price: "150 руб." },
-        { name: "Вода негазированная", description: "0.5л", price: "50 руб." },
-        { name: "Вода газированная", description: "0.5л", price: "50 руб." }
+        { name: "Вода Бонаква 0,5л", description: "", price: "80 руб." },
+        { name: "Добрый Кола 0,5л", description: "", price: "180 руб." },
+        { name: "Добрый Кола 1л", description: "", price: "250 руб." },
+        { name: "Сок Добрый 1л", description: "в ассортименте", price: "250 руб." },
+        { name: "Сок Добрый 0,2л", description: "в ассортименте", price: "80 руб." },
+        { name: "Pulpy 0,5л", description: "", price: "150 руб.", image: "https://cdn.poehali.dev/files/e5498395-19f4-49d0-9226-bbc13453b5b3.png" },
+        { name: "Rich (черный) 0,5л", description: "", price: "150 руб.", image: "https://cdn.poehali.dev/files/03ce2306-65c8-46d8-88ab-4d6af774be1a.png" },
+        { name: "Rich (зеленый) 0,5л", description: "", price: "150 руб.", image: "https://cdn.poehali.dev/files/54a7a154-4b83-4d5e-bd4e-31678162926f.png" },
+        { name: "Добрый Лимон-Лайм 0,5л", description: "", price: "180 руб.", image: "https://cdn.poehali.dev/files/ce5012dc-7205-4d4c-87b1-1291170e3d9d.png" },
+        { name: "Добрый Апельсин 1л", description: "", price: "250 руб.", image: "https://cdn.poehali.dev/files/9ce96942-206c-4e42-a161-80ca43c243af.png" }
       ]
     }
   ];
@@ -143,239 +248,126 @@ const Index = () => {
       icon: "Gift"
     },
     {
-      title: "Бесплатная доставка",
-      description: "При заказе от 1000 рублей доставка бесплатно",
-      icon: "Truck"
+      title: "Скидка на кофе",
+      description: "Предъяви на кассе пиццерии чек с детской площадки \"Дружная семья\" и получи скидку 50% на кофе Американо",
+      icon: "Ticket"
     }
   ];
 
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const addToCart = (name: string, price: string) => {
-    const priceNumber = parseInt(price.replace(/[^0-9]/g, ''));
-    const existingIndex = cartItems.findIndex(item => item.name === name);
-    
-    if (existingIndex >= 0) {
-      const newItems = [...cartItems];
-      newItems[existingIndex].quantity += 1;
-      setCartItems(newItems);
-    } else {
-      setCartItems([...cartItems, { name, price, quantity: 1, priceNumber }]);
-    }
-  };
-
-  const updateQuantity = (index: number, delta: number) => {
-    const newItems = [...cartItems];
-    newItems[index].quantity += delta;
-    if (newItems[index].quantity <= 0) {
-      newItems.splice(index, 1);
-    }
-    setCartItems(newItems);
-  };
-
-  const removeFromCart = (index: number) => {
-    const newItems = [...cartItems];
-    newItems.splice(index, 1);
-    setCartItems(newItems);
-  };
-
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <div className="relative h-screen w-full overflow-hidden">
-        {heroImages.map((img, idx) => (
-          <div
-            key={idx}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              idx === currentImageIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${img})` }}
-            />
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-        ))}
-        
-        <div className="relative h-full flex flex-col items-center justify-center text-white px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-center">
-            Роллы и Пицца
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-center max-w-2xl">
-            Лучшие роллы и пицца в городе. Доставка за 60 минут!
-          </p>
-          <Button 
-            size="lg" 
-            onClick={() => scrollToSection('menu')}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg"
-          >
-            Смотреть меню
-            <Icon name="ChevronDown" className="ml-2" size={24} />
-          </Button>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
-          {heroImages.map((_, idx) => (
-            <div
-              key={idx}
-              className={`w-2 h-2 rounded-full transition-all ${
-                idx === currentImageIndex ? 'bg-white w-8' : 'bg-white/50'
-              }`}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Menu Section */}
-      <section id="menu" className="py-20 px-4 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Наше меню</h2>
-          
-          {menuCategories.map((category, catIndex) => (
-            <div key={catIndex} className="mb-16">
-              <h3 className="text-3xl font-semibold mb-8 text-primary">
-                {category.title}
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {category.items.map((item, itemIndex) => (
-                  <Card key={itemIndex} className="overflow-hidden hover:shadow-lg transition-shadow">
-                    {item.image && (
-                      <div className="h-48 overflow-hidden">
-                        <img 
-                          src={item.image} 
-                          alt={item.name}
-                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                    )}
-                    <CardContent className="p-6">
-                      <h4 className="text-xl font-semibold mb-2">{item.name}</h4>
-                      <p className="text-muted-foreground text-sm mb-4">{item.description}</p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold text-primary">{item.price}</span>
-                        <Button 
-                          onClick={() => addToCart(item.name, item.price)}
-                          className="bg-primary hover:bg-primary/90"
-                        >
-                          <Icon name="ShoppingCart" size={20} className="mr-2" />
-                          В корзину
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+    <div className="min-h-screen bg-background">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
+        <nav className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <img 
+                src="https://cdn.poehali.dev/files/b88c065a-d3a7-46c8-986b-39050a097e32.png" 
+                alt="Дружная семья" 
+                className="h-16 w-auto"
+              />
             </div>
-          ))}
-        </div>
-      </section>
+            <div className="hidden md:flex items-center gap-6">
+              <button onClick={() => scrollToSection('menu')} className="hover:text-primary transition-colors">Меню</button>
+              <button onClick={() => scrollToSection('delivery')} className="hover:text-primary transition-colors">Доставка</button>
+              <button onClick={() => scrollToSection('about')} className="hover:text-primary transition-colors">О нас</button>
+              <button onClick={() => scrollToSection('promotions')} className="hover:text-primary transition-colors">Акции</button>
+              <button onClick={() => scrollToSection('contacts')} className="hover:text-primary transition-colors">Контакты</button>
+            </div>
+            <div className="flex items-center gap-3">
+              <Cart 
+                items={cartItems}
+                onUpdateQuantity={updateQuantity}
+                onRemove={removeFromCart}
+                onCheckout={() => setIsOrderDialogOpen(true)}
+              />
+              <Button size="lg" className="hidden md:flex" asChild>
+                <a href="tel:+79885288552">
+                  <Icon name="Phone" size={20} className="mr-2" />
+                  Позвонить
+                </a>
+              </Button>
+            </div>
+          </div>
+        </nav>
+      </header>
 
-      {/* Promotions Section */}
-      <section className="py-20 px-4 bg-muted/30">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Акции и специальные предложения</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {promotions.map((promo, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon name={promo.icon} size={32} className="text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">{promo.title}</h3>
-                  <p className="text-muted-foreground">{promo.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+      <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
+        {heroImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${image}')`
+            }}
+          />
+        ))}
+        <div className="relative z-10 text-center text-white px-4 animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">Роллы, пицца для семьи</h1>
+          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+            Не жди голода - звони!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="text-lg px-8" onClick={() => scrollToSection('menu')}>
+              Посмотреть меню
+            </Button>
+            <Button size="lg" variant="secondary" className="text-lg px-8" asChild>
+              <a href="tel:+79885288552">
+                <Icon name="Phone" size={20} className="mr-2" />
+                8 988 528 85 52
+              </a>
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Delivery Section */}
-      <section id="delivery" className="py-20 px-4 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Как работает доставка</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: "ShoppingCart",
-                title: "Выберите блюда",
-                description: "Добавьте понравившиеся позиции в корзину"
-              },
-              {
-                icon: "Phone",
-                title: "Оформите заказ",
-                description: "Укажите адрес и способ оплаты"
-              },
-              {
-                icon: "Truck",
-                title: "Получите доставку",
-                description: "Курьер привезет заказ за 60 минут"
-              }
-            ].map((step, index) => (
-              <Card key={index} className="text-center">
-                <CardContent className="p-8">
-                  <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Icon name={step.icon} size={40} className="text-primary-foreground" />
-                  </div>
-                  <h3 className="text-2xl font-semibold mb-4">{step.title}</h3>
-                  <p className="text-muted-foreground">{step.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+      <section id="menu" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Наше меню</h2>
+            <p className="text-xl text-muted-foreground">Выбирайте любимые вкусы</p>
           </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-muted/30">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Контакты</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            {[
-              { icon: "Phone", text: "+7 (999) 123-45-67" },
-              { icon: "MapPin", text: "ул. Примерная, д. 1" },
-              { icon: "Clock", text: "Ежедневно с 10:00 до 23:00" }
-            ].map((info, index) => (
-              <Card key={index} className="text-center">
-                <CardContent className="p-8">
-                  <Icon name={info.icon} size={48} className="mx-auto mb-4 text-primary" />
-                  <p className="text-lg">{info.text}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-3xl font-bold text-center mb-8">Часто задаваемые вопросы</h3>
-            <Accordion type="single" collapsible className="w-full">
-              {[
-                {
-                  question: "Какое минимальное время доставки?",
-                  answer: "Среднее время доставки составляет 45-60 минут в зависимости от вашего адреса и загруженности кухни."
-                },
-                {
-                  question: "Есть ли минимальная сумма заказа?",
-                  answer: "Минимальная сумма заказа составляет 500 рублей. При заказе от 1000 рублей доставка бесплатная!"
-                },
-                {
-                  question: "Какие способы оплаты вы принимаете?",
-                  answer: "Мы принимаем наличные, банковские карты и оплату через онлайн-банкинг."
-                },
-                {
-                  question: "Можно ли заказать к определенному времени?",
-                  answer: "Да, при оформлении заказа вы можете указать желаемое время доставки."
-                }
-              ].map((item, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left">
-                    {item.question}
+          <div className="max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
+              {menuCategories.map((category, categoryIndex) => (
+                <AccordionItem 
+                  key={categoryIndex} 
+                  value={`category-${categoryIndex}`}
+                  className="border rounded-lg overflow-hidden bg-card"
+                >
+                  <AccordionTrigger className="px-6 py-4 hover:bg-secondary/50 transition-colors">
+                    <span className="text-2xl font-bold">{category.title}</span>
                   </AccordionTrigger>
-                  <AccordionContent>
-                    {item.answer}
+                  <AccordionContent className="px-6 pb-4">
+                    <div className="space-y-3 pt-2">
+                      {category.items.map((item, itemIndex) => (
+                        <div 
+                          key={itemIndex} 
+                          className="flex flex-col gap-3 p-4 rounded-lg hover:bg-secondary/30 transition-colors"
+                        >
+                          <div className="flex justify-between items-start gap-4">
+                            <div className="flex-1">
+                              <h4 className="font-semibold text-lg mb-1">{item.name}</h4>
+                              <p className="text-sm text-muted-foreground">{item.description}</p>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <span className="text-lg font-bold text-primary whitespace-nowrap">{item.price}</span>
+                              <Button size="sm" onClick={() => addToCart(item.name, item.price)}>
+                                <Icon name="Plus" size={16} />
+                              </Button>
+                            </div>
+                          </div>
+                          {item.image && (
+                            <img 
+                              src={item.image} 
+                              alt={item.name}
+                              className="w-64 h-auto object-contain rounded-lg mx-auto"
+                            />
+                          )}
+                        </div>
+                      ))}
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -383,35 +375,183 @@ const Index = () => {
           </div>
         </div>
       </section>
-      
-      {/* Cart */}
-      <Cart
-        items={cartItems}
-        onUpdateQuantity={updateQuantity}
-        onRemoveItem={removeFromCart}
-        onCheckout={() => {
-          setIsOrderDialogOpen(true);
-          setCartItems([]);
-        }}
-      />
 
-      {/* Order Dialog */}
+      <section id="delivery" className="py-20 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Доставка</h2>
+            <p className="text-xl text-muted-foreground">Быстро и надежно</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <Card className="text-center p-8 hover:shadow-lg transition-shadow">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
+                <Icon name="Clock" size={40} className="text-primary" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3">от 30 минут</h3>
+              <p className="text-muted-foreground">Среднее время доставки по городу</p>
+            </Card>
+            <Card className="text-center p-8 hover:shadow-lg transition-shadow">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
+                <Icon name="MapPin" size={40} className="text-primary" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3">Бесплатно</h3>
+              <p className="text-muted-foreground">При заказе от 1000₽</p>
+            </Card>
+            <Card className="text-center p-8 hover:shadow-lg transition-shadow">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
+                <Icon name="Bike" size={40} className="text-primary" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3">До 10 км</h3>
+              <p className="text-muted-foreground">Зона доставки от пиццерии</p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div className="order-2 md:order-1">
+              <img 
+                src="https://cdn.poehali.dev/projects/a2124ecf-394a-494a-a99d-4d061660ae60/files/18721c28-6621-4730-8431-e54746b4cb11.jpg"
+                alt="О нас"
+                className="rounded-2xl shadow-2xl w-full"
+              />
+            </div>
+            <div className="order-1 md:order-2">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">О нас</h2>
+              <p className="text-lg text-muted-foreground mb-4">
+                Добро пожаловать в "Дружную семью" – место, где рождается семейное счастье! Мы больше, чем просто пиццерия. Мы – место силы для родителей и настоящий рай для детей.
+              </p>
+              <p className="text-lg text-muted-foreground mb-4">
+                Наша история началась с простой идеи: создать пространство, где взрослые могут насладиться вкусом ароматной пиццы, попробовать Японию на вкус, отведав наши роллы, а их дети весело и беззаботно провести время. Пока вы отдыхаете, ваши непоседы исследуют многоуровневый лабиринт, катаются с горок и играют в сухом бассейне.
+              </p>
+              <p className="text-lg text-muted-foreground mb-4">
+                Вы также можете окунуться в детство, прокатившись на аттракционах в нашем "Парке историй". Мы создали наше пространство для тех, кто ценит моменты радости, вкусную еду и счастливые улыбки своих детей. Приходите всей семьей – мы позаботимся о вашем отдыхе!
+              </p>
+              <div className="flex flex-wrap gap-4 mt-8">
+                <Badge variant="secondary" className="text-lg py-2 px-4">
+                  <Icon name="Award" size={20} className="mr-2" />
+                  14 лет опыта
+                </Badge>
+                <Badge variant="secondary" className="text-lg py-2 px-4">
+                  <Icon name="Heart" size={20} className="mr-2" />
+                  100% натурально
+                </Badge>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="promotions" className="py-20 bg-primary/5">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Акции</h2>
+            <p className="text-xl text-muted-foreground">Специальные предложения для вас</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {promotions.map((promo, index) => (
+              <Card key={index} className="p-8 text-center hover:shadow-xl transition-shadow">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary text-white mb-6">
+                  <Icon name={promo.icon as any} size={40} />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">{promo.title}</h3>
+                <p className="text-muted-foreground">{promo.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Контакты</h2>
+            <p className="text-xl text-muted-foreground">Будем рады видеть вас</p>
+          </div>
+          <div className="max-w-2xl mx-auto">
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-6">Свяжитесь с нами</h3>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <Icon name="Phone" size={24} className="text-primary mt-1" />
+                  <div>
+                    <p className="font-semibold">Телефон</p>
+                    <a href="tel:+79885288552" className="text-muted-foreground hover:text-primary transition-colors">
+                      8 988 528 85 52
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <Icon name="MapPin" size={24} className="text-primary mt-1" />
+                  <div>
+                    <p className="font-semibold">Адрес</p>
+                    <p className="text-muted-foreground">г. Курганинск, ул. Первомайская, 3К "Парк историй"</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <Icon name="Clock" size={24} className="text-primary mt-1" />
+                  <div>
+                    <p className="font-semibold">Режим работы</p>
+                    <p className="text-muted-foreground">Ежедневно с 10:00 до 21:00</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-accent text-white py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-3xl">🍕</span>
+                <span className="text-2xl font-bold logo-font">ДРУЖНАЯ СЕМЬЯ</span>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-xl font-bold mb-4">Навигация</h4>
+              <div className="space-y-2">
+                <button onClick={() => scrollToSection('menu')} className="block hover:text-primary transition-colors">Меню</button>
+                <button onClick={() => scrollToSection('delivery')} className="block hover:text-primary transition-colors">Доставка</button>
+                <button onClick={() => scrollToSection('about')} className="block hover:text-primary transition-colors">О нас</button>
+                <button onClick={() => scrollToSection('promotions')} className="block hover:text-primary transition-colors">Акции</button>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-xl font-bold mb-4">Контакты</h4>
+              <div className="space-y-2 text-white/80">
+                <p>8 988 528 85 52</p>
+                <p>info@druzhnaya-semya.ru</p>
+                <p>г. Курганинск, ул. Первомайская, 3К</p>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-white/20 pt-8 text-center text-white/60">
+            <p>&copy; 2025 Пиццерия "ДРУЖНАЯ СЕМЬЯ". Все права защищены.</p>
+          </div>
+        </div>
+      </footer>
+
       <Dialog open={isOrderDialogOpen} onOpenChange={setIsOrderDialogOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-center">Заказ оформлен!</DialogTitle>
+            <DialogTitle className="text-2xl font-bold text-center">Завершение заказа</DialogTitle>
           </DialogHeader>
-          <div className="flex flex-col items-center py-6">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-4">
-              <Icon name="Check" size={48} className="text-green-600" />
-            </div>
-            <p className="text-center text-lg mb-2">Спасибо за ваш заказ!</p>
-            <p className="text-center text-muted-foreground mb-6">
-              Мы свяжемся с вами в ближайшее время для подтверждения.
+          <div className="space-y-4 py-4">
+            <p className="text-center text-lg">
+              Для завершения оформления заказа позвоните нам по номеру телефона
             </p>
-            <Button onClick={() => setIsOrderDialogOpen(false)} className="w-full">
-              Закрыть
-            </Button>
+            <a
+              href="tel:+79885288552"
+              className="flex items-center justify-center gap-3 bg-primary text-primary-foreground hover:bg-primary/90 p-4 rounded-lg transition-colors"
+            >
+              <Icon name="Phone" className="h-6 w-6" />
+              <span className="text-2xl font-bold">8 988 528 85 52</span>
+            </a>
           </div>
         </DialogContent>
       </Dialog>
