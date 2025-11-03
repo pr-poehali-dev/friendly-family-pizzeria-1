@@ -235,6 +235,16 @@ const Index = () => {
       ]
     },
     {
+      title: "Японские хот-доги",
+      items: [
+        { name: "Хот-дог с креветкой", description: "", price: "400 руб.", image: "https://cdn.poehali.dev/files/c4932371-6088-4ec2-b03a-07cfa05e94c7.png" },
+        { name: "Хот-дог с угрём", description: "", price: "530 руб.", image: "https://cdn.poehali.dev/files/c4932371-6088-4ec2-b03a-07cfa05e94c7.png" },
+        { name: "Хот-дог с тунцом", description: "", price: "600 руб.", image: "https://cdn.poehali.dev/files/c4932371-6088-4ec2-b03a-07cfa05e94c7.png" },
+        { name: "Хот-дог с лососем", description: "", price: "600 руб.", image: "https://cdn.poehali.dev/files/c4932371-6088-4ec2-b03a-07cfa05e94c7.png" },
+        { name: "Хот-дог с крабом", description: "", price: "250 руб.", image: "https://cdn.poehali.dev/files/c4932371-6088-4ec2-b03a-07cfa05e94c7.png" }
+      ]
+    },
+    {
       title: "Соусы",
       items: [
         { name: "Сырный соус", description: "", price: "50 руб." },
