@@ -230,7 +230,8 @@ const Index = () => {
         { name: "Pulpy 0,5л", description: "", price: "150 руб.", image: "https://cdn.poehali.dev/files/e5498395-19f4-49d0-9226-bbc13453b5b3.png" },
         { name: "Rich (черный) 0,5л", description: "", price: "150 руб.", image: "https://cdn.poehali.dev/files/03ce2306-65c8-46d8-88ab-4d6af774be1a.png" },
         { name: "Rich (зеленый) 0,5л", description: "", price: "150 руб.", image: "https://cdn.poehali.dev/files/54a7a154-4b83-4d5e-bd4e-31678162926f.png" },
-        { name: "Добрый Лимон-Лайм 0,5л", description: "", price: "180 руб.", image: "https://cdn.poehali.dev/files/ce5012dc-7205-4d4c-87b1-1291170e3d9d.png" }
+        { name: "Добрый Лимон-Лайм 0,5л", description: "", price: "180 руб.", image: "https://cdn.poehali.dev/files/ce5012dc-7205-4d4c-87b1-1291170e3d9d.png" },
+        { name: "Добрый Апельсин 1л", description: "", price: "250 руб.", image: "https://cdn.poehali.dev/files/9ce96942-206c-4e42-a161-80ca43c243af.png" }
       ]
     }
   ];
