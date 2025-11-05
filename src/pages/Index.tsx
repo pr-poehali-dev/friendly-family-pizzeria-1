@@ -237,7 +237,7 @@ const Index = () => {
     {
       title: "Японские хот-доги",
       items: [
-        { name: "Хот-дог с креветкой", description: "", price: "400 руб." },
+        { name: "Хот-дог с креветкой", description: "", price: "400 руб.", image: "https://cdn.poehali.dev/files/1f56bd63-2ec0-4e9f-ab93-f8dd709a7651.png" },
         { name: "Хот-дог с угрём", description: "", price: "530 руб." },
         { name: "Хот-дог с тунцом", description: "", price: "600 руб." },
         { name: "Хот-дог с лососем", description: "", price: "600 руб." },
