@@ -544,7 +544,6 @@ const Index = () => {
               <h4 className="text-xl font-bold mb-4">Контакты</h4>
               <div className="space-y-2 text-white/80">
                 <p>8 988 528 85 52</p>
-                <p>info@druzhnaya-semya.ru</p>
                 <p>г. Курганинск, ул. Первомайская, 3К</p>
               </div>
             </div>
